@@ -33,8 +33,10 @@ import './screens/help.dart';
 TextStyle myStyle = TextStyle(color: Colors.green[900],
   fontWeight: FontWeight.w500);
 
-/*void main() {  use on mobile */
+void main() {  //use on mobile 
 
+/*
+comment for desktop starts
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +51,9 @@ void main() async {
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();
     await windowManager.focus();});
+  
+comment for desktop end  
+*/
     
   runApp(MyApp());}
 
