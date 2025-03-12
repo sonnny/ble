@@ -4,12 +4,17 @@ ble_app/macos/
 ble_app/linux/
 ble_app/ios/
 ble_app/android/
+ble_app/build/
+ble_app/web/
 ble_app/.dart_tool/
 ble_app/.idea/
 ble_app/.metadata
 ble_app/analysis_options.yaml
 ble_app/ble_app.iml
 ble_app/pubspec.lock
+ble_app/.flutter-plugins
+ble_app/.flutter-plugins-dependencies
+
 
 
 

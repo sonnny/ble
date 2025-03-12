@@ -9,6 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  expandable: ^5.0.1
+  universal_ble: ^0.16.0
+  window_manager: ^0.4.3
 
 dev_dependencies:
   flutter_test:
