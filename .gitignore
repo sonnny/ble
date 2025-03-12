@@ -14,6 +14,8 @@ ble_app/ble_app.iml
 ble_app/pubspec.lock
 ble_app/.flutter-plugins
 ble_app/.flutter-plugins-dependencies
+picow/example/build/
+
 
 
 
