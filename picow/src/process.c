@@ -2,10 +2,34 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "ws2812.h"
+#include "user_functions.h"
+
+#define NUMBER_OF_STRING 10
+#define MAX_STRING_SIZE 25
+#define ACTIVE_FUNCTIONS 2 // change to how many active functions
+
+usr_funcs user_functions[MAX_USER_FUNCTIONS];
+char tokens[NUMBER_OF_STRING][MAX_STRING_SIZE];
+
+int parse_string(char *str, char tokens[][MAX_STRING_SIZE], char *delim){
+  char *buffer = str;
+  int x = 0;
+  char *token = strtok(buffer, delim);
+  while (token != NULL){
+    strcpy(tokens[x], token);
+    token = strtok(NULL, " ");
+    x++;}
+    return x;}
+
+void process_init(){
+  init_user_functions();}
 
 void process_string(char *str){
-  if (strcmp(str, "rgb red") == 0)        ws2812_display(0x00100000);
-  else if (strcmp(str, "rgb blue") == 0)  ws2812_display(0x00001000); 
-  else if (strcmp(str, "rgb green") == 0) ws2812_display(0x10000000);   
-} 
+  printf("process string %s\n", str);
+  int token_cnt = parse_string(str, tokens, " ");
+
+  for (int i = 0; i < ACTIVE_FUNCTIONS; i++){
+    if (strcmp(user_functions[i].command_name, tokens[0]) == 0){
+      user_functions[i].user_function(tokens);
+      break;}}}
+

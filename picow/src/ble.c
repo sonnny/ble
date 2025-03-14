@@ -72,7 +72,11 @@ void bt_get_latest(struct bt_type *dst){
 	async_context_t *context = cyw43_arch_async_context();
 	async_context_acquire_lock_blocking(context);
 	memcpy(dst, &latest, sizeof(*dst));
-	async_context_release_lock(context);}
+	async_context_release_lock(context);
+	latest.packet[0] = (char)0x41;
+	latest.packet[1] = (char)0x42;
+	latest.packet[2] = '\0';
+	latest.length = 2;}
 
 void bt_main(void){
  if (cyw43_arch_init()) {

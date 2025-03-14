@@ -1,16 +1,12 @@
 // example.c
-// use nrf connect to test
-// send only less the 20 char on ble
-// needs to change mtu to send more than 20
-
+#include <stdio.h>
+#include <string.h>
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 #include "pico/stdlib.h"
 #include "pico/multicore.h"
 #include "ble.h"
-#include "pico/cyw43_arch.h"
 #include "process.h"
-#include "ws2812.h"
 
 void main(void){
   struct bt_type ble_data;
@@ -18,18 +14,24 @@ void main(void){
   char previous_string[80];
 
   stdio_init_all();
-  ws2812_init();
-  ws2812_display(0x00000000); 
   sleep_ms(2000); // do not remove this delay
   multicore_launch_core1(bt_main);
   sleep_ms(1000); // do not remove this delay
-  cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN,1);
+  process_init();
   printf("starting...\n");
   for(;;){
-    sleep_ms(100);
+    sleep_ms(1000);
     bt_get_latest(&ble_data);
     for(int i = 0; i < ble_data.length; i++) new_string[i] = (char)ble_data.packet[i];
     new_string[ble_data.length] = '\0';
-    if (strcmp(new_string, previous_string) != 0){ 
-      process_string(new_string);
-      strcpy(previous_string, new_string);}}}
+    //if (strcmp(new_string, previous_string) != 0){
+    //printf("new string %s\n",new_string);
+    //printf("new length %d\n",strlen(new_string));
+    //printf("prev string %s\n",previous_string);
+    //printf("prev length %d\n",strlen(previous_string));  
+      process_string(new_string);}}
+      
+     // for(int i=0; i<strlen(new_string); i++) previous_string[i] = (char)new_string[i];
+       //  previous_string[strlen(new_string)+1] = '\0'; }}}
+      //strncpy(previous_string, new_string, strlen(new_string));}}}
+

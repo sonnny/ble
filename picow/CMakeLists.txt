@@ -11,6 +11,7 @@ pico_sdk_init()
 add_library(template
   src/ws2812.c
   src/process.c
+  src/user_functions.c
   src/ble.c)
 
 target_include_directories(template PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include )
