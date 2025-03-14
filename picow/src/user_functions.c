@@ -24,6 +24,13 @@ void init_user_functions() {
   strcpy(user_functions[1].command_help,
          "blink led");
   user_functions[1].user_function = blink;
+  
+  strcpy(user_functions[2].command_name, "blink_rgb");
+  strcpy(user_functions[2].command_help,
+         "blink rgb");
+  user_functions[2].user_function = blink_rgb;
+  
+  //when you add user func change process.c ACTIVE_FUNCTIONS
 
 } // init_user_functions
 
@@ -37,11 +44,19 @@ void rgb(char tokens[][MAX_STRING_SIZE]) {
 void blink(char tokens[][MAX_STRING_SIZE]){
   uint16_t iters = atoi(tokens[1]);
   uint16_t delay = atoi(tokens[2]);
-
-  //printf("blink times %d\n",count);
   for(int i = 0; i < iters; i++){
     cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
     sleep_ms(delay);
     cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0);
     sleep_ms(delay);}}
 
+void blink_rgb(char tokens[][MAX_STRING_SIZE]){
+  uint16_t iters = atoi(tokens[1]);
+  uint16_t delay = atoi(tokens[2]);
+  for(int i=0; i<iters; i++){
+    ws2812_display(0x00100000);
+    sleep_ms(delay);
+    ws2812_display(0x00001000);
+    sleep_ms(delay);
+    ws2812_display(0x10000000);
+    sleep_ms(delay);}}
