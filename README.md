@@ -4,29 +4,50 @@ project for flutter android app ble and picow ble
 this is my first github from local repository, I finally decided to learn git
 
   git config user.name "John Doe"
+  
   git config user.mail "john_doe@yahoo.com"
+  
 
   git status  --  checks for tracking files
+  
   git add filename or directory  -- tracks file or directory
+  
   git commit -m "add your comment here"
   
 to upload from my local repository to github.com, get a token:
 
   got to your github.com account
+  
   make sure the repository exists already
+  
   click on your repository where to push the changes
+  
   on your git profile (upper right hand corner) click on settings
+  
   on the left hand side of the screen, scroll down and click on developers settings
+  
   click on personal access tokens
+  
   click tokens (classic)
+  
   click generate new token
+  
   copy the token locally
   
+  
 to push your changes
+
   on the root folder of your local repository
+  
   git push
+  
   enter your github.com username
+  
   on password cut and paste the token you generated from above
+  
+  when you cut and paste the token, the cursor will not move and it would seem like it did not
+  take the token but press enter anyways
+  
   hit enter
   
   edit .gitignore for files you don't want to upload to github.com
