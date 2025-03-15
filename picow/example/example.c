@@ -20,18 +20,9 @@ void main(void){
   process_init();
   printf("starting...\n");
   for(;;){
-    sleep_ms(1000);
+    sleep_ms(100);
     bt_get_latest(&ble_data);
     for(int i = 0; i < ble_data.length; i++) new_string[i] = (char)ble_data.packet[i];
     new_string[ble_data.length] = '\0';
-    //if (strcmp(new_string, previous_string) != 0){
-    //printf("new string %s\n",new_string);
-    //printf("new length %d\n",strlen(new_string));
-    //printf("prev string %s\n",previous_string);
-    //printf("prev length %d\n",strlen(previous_string));  
       process_string(new_string);}}
-      
-     // for(int i=0; i<strlen(new_string); i++) previous_string[i] = (char)new_string[i];
-       //  previous_string[strlen(new_string)+1] = '\0'; }}}
-      //strncpy(previous_string, new_string, strlen(new_string));}}}
 

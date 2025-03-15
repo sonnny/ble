@@ -37,9 +37,9 @@ void init_user_functions() {
 void rgb(char tokens[][MAX_STRING_SIZE]) { 
   char color[20];
   strcpy(color, tokens[1]);
-  if (strcmp(color, "red") == 0) ws2812_display(0x00100000);
-  else if (strcmp(color, "blue") == 0) ws2812_display(0x00001000);
-  else if (strcmp(color, "green") == 0) ws2812_display(0x10000000);}
+  if (strcmp(color, "red") == 0) ws2812_display(0x00FF0000);
+  else if (strcmp(color, "blue") == 0) ws2812_display(0x0000FF00);
+  else if (strcmp(color, "green") == 0) ws2812_display(0xFF000000);}
   
 void blink(char tokens[][MAX_STRING_SIZE]){
   uint16_t iters = atoi(tokens[1]);
@@ -54,9 +54,9 @@ void blink_rgb(char tokens[][MAX_STRING_SIZE]){
   uint16_t iters = atoi(tokens[1]);
   uint16_t delay = atoi(tokens[2]);
   for(int i=0; i<iters; i++){
-    ws2812_display(0x00100000);
+    ws2812_display(0x00FF0000);
     sleep_ms(delay);
-    ws2812_display(0x00001000);
+    ws2812_display(0x0000FF00);
     sleep_ms(delay);
-    ws2812_display(0x10000000);
+    ws2812_display(0xFF000000);
     sleep_ms(delay);}}
