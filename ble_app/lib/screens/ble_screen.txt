@@ -6,7 +6,6 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import './widgets/services_list_widget.dart';
-import './my_ble.dart';
 
 class BleScreen extends StatefulWidget{
   final String deviceId;
@@ -74,7 +73,7 @@ class BleScreenState extends State<BleScreen>{
           
     body: Column(spacing: 15, children: [
       
-      SizedBox(height:5),
+      SizedBox(height:10),
       
       Row(spacing: 10, children:[
           SizedBox(width:10),
@@ -83,22 +82,33 @@ class BleScreenState extends State<BleScreen>{
               try{
                 await UniversalBle.connect(widget.deviceId);
               } catch (e) {print(e);}}),
-              
           ElevatedButton(child: Text('disconnect'),
             onPressed:(){ UniversalBle.disconnect(widget.deviceId);}),
           if (BleCapabilities.supportsRequestMtuApi)
             ElevatedButton(child: Text('mtu'),
             onPressed:() async {
               int mtu = await UniversalBle.requestMtu(
-                widget.deviceId, 247);})]),            
+                widget.deviceId, 247);})]),
+                            
+ if (selectedCharacteristic != null)
+     Padding(padding: EdgeInsets.fromLTRB(10,0,10,0), child: TextField(controller: controller,
+      decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'enter text to send'),
+      inputFormatters: [LengthLimitingTextInputFormatter(80),],
+      onSubmitted: (text){ble_write(text);})),
+
+      //if (deviceType != DeviceType.desktop)
       
       Visibility(visible: selectedCharacteristic == null,
                  child:       ServicesListWidget(
                           discoveredServices: discoveredServices,
                           onTap: (BleService service,
                               BleCharacteristic characteristic) {
-                              Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => MyBle(
-                                  widget.deviceId,
-                                  service,
-                                  characteristic)));}))]));}}
+                            setState(() {
+                              selectedCharacteristic = (
+                                service: service,
+                                characteristic: characteristic
+                              );
+                            });
+                            }))
+                                 
+]));}}

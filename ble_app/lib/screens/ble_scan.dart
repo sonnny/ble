@@ -79,7 +79,7 @@ class BleScanState extends State<BleScan>{
                 isScanning = false;});}),
      ElevatedButton(child: Text('Sys devices'),
              onPressed: getSystemDevices,)]),
-    
+             
     Expanded(child: isScanning && bleDevices.isEmpty
       ? Center(child: CircularProgressIndicator.adaptive())
       : !isScanning && bleDevices.isEmpty
