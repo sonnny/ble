@@ -58,7 +58,9 @@ this project is tested on linux desktop, linux laptop, google pixel 7a, samsung 
 current user functions:
 
 rgb red  --  change ws2812 to red
+
 rgb blue
+
 rgb green
 
 blink 10 200  --  blink picow led 10 times with delay of 200 ms
@@ -67,7 +69,19 @@ blink_rgb 10 200  --  blink rgb 10 times delay of 200 ms
                         blink red delay 200 ms
                         blink green delay 200 ms
                         blink blue delay 200 ms
-                        repeat this ten tiems
+                        repeat this ten times
+                        
+motor_speed stop
+
+motor_speed slow
+
+motor_speed medium
+
+motor_speed fast
+
+motor_direction forward
+
+motor_direction reverse
 
 flutter:
   flutter create ble_app --empty
