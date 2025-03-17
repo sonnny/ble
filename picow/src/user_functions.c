@@ -32,13 +32,9 @@ void init_user_functions() {
          "blink rgb");
   user_functions[2].user_function = blink_rgb;
   
-  strcpy(user_functions[3].command_name, "motor_speed");
-  strcpy(user_functions[3].command_help, "set motor speed");
-  user_functions[3].user_function = set_motor_speed;
-  
-  strcpy(user_functions[4].command_name, "motor_direction");
-  strcpy(user_functions[4].command_help, "set motor direction");
-  user_functions[4].user_function = set_motor_direction;
+  strcpy(user_functions[3].command_name, "motor");
+  strcpy(user_functions[3].command_help, "set motor speed or directions");
+  user_functions[3].user_function = set_motor;
     
   //when you add user func change process.c ACTIVE_FUNCTIONS
 
@@ -74,18 +70,20 @@ void blink_rgb(char tokens[][MAX_STRING_SIZE]){
     ws2812_display(0xFF000000);
     sleep_ms(delay);}}
     
-void set_motor_speed(char tokens[][MAX_STRING_SIZE]){
-  //printf("function set motor speed\n");
+void set_motor(char tokens[][MAX_STRING_SIZE]){
+  //printf("function set motor\n");
   char speed[20];
-  strcpy(speed, tokens[1]);
-  if (strcmp(speed, "stop") == 0) motor_speed(STOP);
-  else if (strcmp(speed, "slow") == 0) motor_speed(SLOW);
-  else if (strcmp(speed, "medium") == 0) motor_speed(MEDIUM);
-  else if (strcmp(speed, "fast") == 0) motor_speed(FAST);}
-  
-void set_motor_direction(char tokens[][MAX_STRING_SIZE]){
-  //printf("function set motor direction\n");
-  char direction[20];
-  strcpy(direction, tokens[1]);
-  if (strcmp(direction, "forward") == 0) motor_direction(1);
-  else if (strcmp(direction, "reverse") == 0) motor_direction(0);}
+  char choice[20];
+  char dir[20];
+  strcpy(choice, tokens[1]);
+  if (strcmp(choice, "speed") == 0){
+    strcpy(speed, tokens[2]);
+    if (strcmp(speed, "stop") == 0) motor_speed(STOP);
+    else if (strcmp(speed, "slow") == 0) motor_speed(SLOW);
+    else if (strcmp(speed, "medium") == 0) motor_speed(MEDIUM);
+    else if (strcmp(speed, "fast") == 0) motor_speed(FAST);}
+  else if (strcmp(choice, "direction") == 0){
+         strcpy(dir, tokens[2]);
+         if (strcmp(dir, "forward") == 0) motor_direction(FORWARD);
+         else if (strcmp(dir, "reverse") == 0) motor_direction(REVERSE);}}
+         

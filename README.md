@@ -71,17 +71,17 @@ blink_rgb 10 200  --  blink rgb 10 times delay of 200 ms
                         blink blue delay 200 ms
                         repeat this ten times
                         
-motor_speed stop
+motor speed stop
 
-motor_speed slow
+motor speed slow
 
-motor_speed medium
+motor speed medium
 
-motor_speed fast
+motor speed fast
 
-motor_direction forward
+motor direction forward
 
-motor_direction reverse
+motor direction reverse
 
 flutter:
   flutter create ble_app --empty
@@ -123,7 +123,13 @@ flutter:
     src/process.c line 9 (this saves processing time in the loop). See include/ws2812.h and src/ws2812.c for
     example of adding functions, this is from https://github.com/fapplin/rp2040-pico-command-line-interpreter
     
-    
+pinout:
+
+ws2812           k--  gpio 19
+
+motor pwm        --  gpio 13
+
+motor direction  --  gpio 6 
   
   
   

@@ -19,7 +19,7 @@ void init_user_functions();
 void rgb(char tokens[][MAX_STRING_SIZE]);
 void blink(char tokens[][MAX_STRING_SIZE]);
 void blink_rgb(char tokens[][MAX_STRING_SIZE]);
-void set_motor_speed(char tokens[][MAX_STRING_SIZE]);
-void set_motor_direction(char tokens[][MAX_STRING_SIZE]);
+void set_motor(char tokens[][MAX_STRING_SIZE]);
+
 
 #endif
