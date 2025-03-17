@@ -13,6 +13,8 @@ add_library(template
   src/process.c
   src/user_functions.c
   src/ble.c
+  src/ili9341.c
+  src/gfx.c
   src/my_pwm.c)
 
 target_include_directories(template PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include )
@@ -23,6 +25,8 @@ pico_generate_pio_header(template ${CMAKE_CURRENT_LIST_DIR}/include/ws2812.pio)
 
 target_link_libraries(template
   hardware_gpio
+  hardware_spi
+  hardware_dma
   hardware_pwm
   hardware_irq
   pico_btstack_ble

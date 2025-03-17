@@ -3,7 +3,7 @@
 #define MY_PWM_H
 
 #define PWM_OUT 13
-#define DIRECTION 6
+#define DIRECTION 8
 
 #define STOP 0
 #define SLOW 250

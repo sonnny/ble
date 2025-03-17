@@ -8,12 +8,14 @@
 #include "process.h"
 #include "user_functions.h"
 #include "my_pwm.h"
+#include "ili9341.h"
 
 void init_user_functions() {
 
   // init pico hardware
   ws2812_init();
   init_motor();
+  init_ili9341();
   
   // 1st user function
   strcpy(user_functions[0].command_name, "rgb");
@@ -35,6 +37,10 @@ void init_user_functions() {
   strcpy(user_functions[3].command_name, "motor");
   strcpy(user_functions[3].command_help, "set motor speed or directions");
   user_functions[3].user_function = set_motor;
+  
+  strcpy(user_functions[4].command_name, "screen");
+  strcpy(user_functions[4].command_help, "screen info");
+  user_functions[4].user_function = screen;
     
   //when you add user func change process.c ACTIVE_FUNCTIONS
 
@@ -82,8 +88,12 @@ void set_motor(char tokens[][MAX_STRING_SIZE]){
     else if (strcmp(speed, "slow") == 0) motor_speed(SLOW);
     else if (strcmp(speed, "medium") == 0) motor_speed(MEDIUM);
     else if (strcmp(speed, "fast") == 0) motor_speed(FAST);}
-  else if (strcmp(choice, "direction") == 0){
-         strcpy(dir, tokens[2]);
-         if (strcmp(dir, "forward") == 0) motor_direction(FORWARD);
-         else if (strcmp(dir, "reverse") == 0) motor_direction(REVERSE);}}
+  else if (strcmp(choice, "forward") == 0) motor_direction(FORWARD);
+  else if (strcmp(choice, "reverse") == 0) motor_direction(REVERSE);}
          
+void screen(char tokens[][MAX_STRING_SIZE]){
+  char choice[20];
+  strcpy(choice, tokens[1]);
+  if (strcmp(choice, "help") == 0) screen_help();
+  else if (strcmp(choice, "clear") == 0) screen_clear();}
+

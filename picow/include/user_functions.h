@@ -20,6 +20,7 @@ void rgb(char tokens[][MAX_STRING_SIZE]);
 void blink(char tokens[][MAX_STRING_SIZE]);
 void blink_rgb(char tokens[][MAX_STRING_SIZE]);
 void set_motor(char tokens[][MAX_STRING_SIZE]);
+void screen(char tokens[][MAX_STRING_SIZE]);
 
 
 #endif

@@ -34,6 +34,6 @@ void motor_speed(uint16_t s){
   speed = s;}
 
 void motor_direction(uint8_t direction){
-  printf("motor_direction: %d\n",direction);
+  //printf("motor_direction: %d\n",direction);
   gpio_put(DIRECTION, direction);}
   

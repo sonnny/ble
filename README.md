@@ -83,6 +83,10 @@ motor direction forward
 
 motor direction reverse
 
+screen clear
+
+screen help
+
 flutter:
   flutter create ble_app --empty
   overwrite lib directory to this lib directory
@@ -125,11 +129,21 @@ flutter:
     
 pinout:
 
-ws2812           k--  gpio 19
+ws2812           --  gpio 19
 
 motor pwm        --  gpio 13
 
-motor direction  --  gpio 6 
+motor direction  --  gpio 8 
+
+ili9341_pinCS    --  20;
+
+ili9341_pinDC    --  9;
+
+ili9341_pinRST   --  16;
+
+ili9341_pinSCK   --  6;
+
+ili9341_pinTX    --  7;
   
   
   
