@@ -72,9 +72,9 @@ void screen_help(){
   GFX_printf("blink_rgb 5 200");
   GFX_setTextColor(ILI9341_ORANGE);
   GFX_setCursor(0, 36);
-  GFX_printf("motor speed stop/slow/medium/fast");
+  GFX_printf("motor stop/slower/slow/medium/fast/forward/reverse");
   GFX_setCursor(0, 48);
-  GFX_printf("motor reverse");
+  GFX_printf("servo center/left/right");
   GFX_setTextColor(ILI9341_WHITE);
   GFX_setCursor(0, 60);
   GFX_printf("screen help/clear");

@@ -6,6 +6,7 @@
 #define DIRECTION 8
 
 #define STOP 0
+#define SLOWER 125
 #define SLOW 250
 #define MEDIUM 500
 #define FAST 999

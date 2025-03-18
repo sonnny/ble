@@ -14,6 +14,7 @@ add_library(template
   src/user_functions.c
   src/ble.c
   src/ili9341.c
+  src/servo.c
   src/gfx.c
   src/my_pwm.c)
 
@@ -25,6 +26,7 @@ pico_generate_pio_header(template ${CMAKE_CURRENT_LIST_DIR}/include/ws2812.pio)
 
 target_link_libraries(template
   hardware_gpio
+  hardware_clocks
   hardware_spi
   hardware_dma
   hardware_pwm

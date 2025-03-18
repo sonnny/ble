@@ -9,6 +9,9 @@
 #include "user_functions.h"
 #include "my_pwm.h"
 #include "ili9341.h"
+#include "servo.h"
+
+struct servo_type servo;
 
 void init_user_functions() {
 
@@ -16,6 +19,7 @@ void init_user_functions() {
   ws2812_init();
   init_motor();
   init_ili9341();
+  init_servo(&servo, 18, false);
   
   // 1st user function
   strcpy(user_functions[0].command_name, "rgb");
@@ -41,6 +45,10 @@ void init_user_functions() {
   strcpy(user_functions[4].command_name, "screen");
   strcpy(user_functions[4].command_help, "screen info");
   user_functions[4].user_function = screen;
+  
+  strcpy(user_functions[5].command_name, "servo");
+  strcpy(user_functions[5].command_help, "servo functions");
+  user_functions[5].user_function = servo_function;
     
   //when you add user func change process.c ACTIVE_FUNCTIONS
 
@@ -78,16 +86,14 @@ void blink_rgb(char tokens[][MAX_STRING_SIZE]){
     
 void set_motor(char tokens[][MAX_STRING_SIZE]){
   //printf("function set motor\n");
-  char speed[20];
   char choice[20];
   char dir[20];
   strcpy(choice, tokens[1]);
-  if (strcmp(choice, "speed") == 0){
-    strcpy(speed, tokens[2]);
-    if (strcmp(speed, "stop") == 0) motor_speed(STOP);
-    else if (strcmp(speed, "slow") == 0) motor_speed(SLOW);
-    else if (strcmp(speed, "medium") == 0) motor_speed(MEDIUM);
-    else if (strcmp(speed, "fast") == 0) motor_speed(FAST);}
+  if (strcmp(choice, "stop") == 0) motor_speed(STOP);
+  else if (strcmp(choice, "slower") == 0) motor_speed(SLOWER);
+  else if (strcmp(choice, "slow") == 0) motor_speed(SLOW);
+  else if (strcmp(choice, "medium") == 0) motor_speed(MEDIUM);
+  else if (strcmp(choice, "fast") == 0) motor_speed(FAST);
   else if (strcmp(choice, "forward") == 0) motor_direction(FORWARD);
   else if (strcmp(choice, "reverse") == 0) motor_direction(REVERSE);}
          
@@ -96,4 +102,11 @@ void screen(char tokens[][MAX_STRING_SIZE]){
   strcpy(choice, tokens[1]);
   if (strcmp(choice, "help") == 0) screen_help();
   else if (strcmp(choice, "clear") == 0) screen_clear();}
+  
+void servo_function(char tokens[][MAX_STRING_SIZE]){
+  char choice[20];
+  strcpy(choice, tokens[1]);
+  if (strcmp(choice, "center") == 0) servoPosition(&servo, SERVO_CENTER);
+  else if (strcmp(choice, "left") == 0) servoPosition(&servo, SERVO_LEFT);
+  else if (strcmp(choice, "right") == 0) servoPosition(&servo, SERVO_RIGHT);}
 

@@ -57,35 +57,17 @@ this project is tested on linux desktop, linux laptop, google pixel 7a, samsung 
 
 current user functions:
 
-rgb red  --  change ws2812 to red
+rgb red/blue/green
 
-rgb blue
+blink 10 200 - blink picow led 10 times delay 200 ms
 
-rgb green
+blink_rgb 10 200 
 
-blink 10 200  --  blink picow led 10 times with delay of 200 ms
+motor stop/slower/slow/medium/fast/forward/reverse
 
-blink_rgb 10 200  --  blink rgb 10 times delay of 200 ms
-                        blink red delay 200 ms
-                        blink green delay 200 ms
-                        blink blue delay 200 ms
-                        repeat this ten times
-                        
-motor speed stop
+servor left/center/right
 
-motor speed slow
-
-motor speed medium
-
-motor speed fast
-
-motor direction forward
-
-motor direction reverse
-
-screen clear
-
-screen help
+screen clear/help
 
 flutter:
   flutter create ble_app --empty
@@ -127,23 +109,25 @@ flutter:
     src/process.c line 9 (this saves processing time in the loop). See include/ws2812.h and src/ws2812.c for
     example of adding functions, this is from https://github.com/fapplin/rp2040-pico-command-line-interpreter
     
-pinout:
+picow pinout:
 
-ws2812           --  gpio 19
+ws2812          ---- 19
 
-motor pwm        --  gpio 13
+motor pwm       ---- 13
 
-motor direction  --  gpio 8 
+motor direction ----  8 
 
-ili9341_pinCS    --  20;
+ili9341_pinCS   ---- 20
 
-ili9341_pinDC    --  9;
+ili9341_pinDC   ----  9
 
-ili9341_pinRST   --  16;
+ili9341_pinRST  ---- 16
 
-ili9341_pinSCK   --  6;
+ili9341_pinSCK  ----  6
 
-ili9341_pinTX    --  7;
+ili9341_pinTX   ----  7
+
+servo           ---- 18
   
   
   
