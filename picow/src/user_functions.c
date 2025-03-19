@@ -10,6 +10,7 @@
 #include "my_pwm.h"
 #include "ili9341.h"
 #include "servo.h"
+#include "max7219.h"
 
 struct servo_type servo;
 
@@ -20,6 +21,7 @@ void init_user_functions() {
   init_motor();
   init_ili9341();
   init_servo(&servo, 18, false);
+  init_max7219();
   
   // 1st user function
   strcpy(user_functions[0].command_name, "rgb");
@@ -49,6 +51,10 @@ void init_user_functions() {
   strcpy(user_functions[5].command_name, "servo");
   strcpy(user_functions[5].command_help, "servo functions");
   user_functions[5].user_function = servo_function;
+  
+  strcpy(user_functions[6].command_name, "counter");
+  strcpy(user_functions[6].command_help, "count up max7219 chip");
+  user_functions[6].user_function = max7219;
     
   //when you add user func change process.c ACTIVE_FUNCTIONS
 
@@ -109,4 +115,8 @@ void servo_function(char tokens[][MAX_STRING_SIZE]){
   if (strcmp(choice, "center") == 0) servoPosition(&servo, SERVO_CENTER);
   else if (strcmp(choice, "left") == 0) servoPosition(&servo, SERVO_LEFT);
   else if (strcmp(choice, "right") == 0) servoPosition(&servo, SERVO_RIGHT);}
-
+  
+void max7219(char tokens[][MAX_STRING_SIZE]){
+  uint16_t iters = atoi(tokens[1]);
+  uint16_t delay = atoi(tokens[2]);
+  display_max7219(iters, delay);}

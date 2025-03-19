@@ -57,6 +57,8 @@ this project is tested on linux desktop, linux laptop, google pixel 7a, samsung 
 
 current user functions:
 
+===================================
+
 rgb red/blue/green
 
 blink 10 200 - blink picow led 10 times delay 200 ms
@@ -68,6 +70,10 @@ motor stop/slower/slow/medium/fast/forward/reverse
 servor left/center/right
 
 screen clear/help
+
+counter 50 100 -- count 7 segment display up to 50 delay 100 ms
+
+===================================
 
 flutter:
   flutter create ble_app --empty
@@ -123,11 +129,28 @@ ili9341_pinDC   ----  9
 
 ili9341_pinRST  ---- 16
 
-ili9341_pinSCK  ----  6
+ili9341_pinSCK  ----  6 ckl spi0
 
-ili9341_pinTX   ----  7
+ili9341_pinTX   ----  7 mosi spi0
 
 servo           ---- 18
+
+max7219 cs      ---- 11
+
+max7219 clk     ---- 14 clk spi1
+
+max7219 din     ---- 15 mosi spi1
+
+
+motor is powered from a 5v separate power supply
+
+servo is powered from a 5v separate power supply
+
+eight 7 segment led is powered from a 5v separate power supply
+
+ili9341 is powered from picow 3.3v
+
+single rgb (ws2812) is powered from picow 5v
   
   
   

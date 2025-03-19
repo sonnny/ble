@@ -7,7 +7,7 @@
 
 #define NUMBER_OF_STRING 10
 #define MAX_STRING_SIZE 25
-#define ACTIVE_FUNCTIONS 6 // change to how many active functions
+#define ACTIVE_FUNCTIONS 7 // change to how many active functions
 
 usr_funcs user_functions[MAX_USER_FUNCTIONS];
 char tokens[NUMBER_OF_STRING][MAX_STRING_SIZE];

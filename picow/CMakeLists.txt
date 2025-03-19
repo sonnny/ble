@@ -10,6 +10,7 @@ pico_sdk_init()
 
 add_library(template
   src/ws2812.c
+  src/max7219.c
   src/process.c
   src/user_functions.c
   src/ble.c

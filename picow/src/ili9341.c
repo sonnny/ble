@@ -78,6 +78,9 @@ void screen_help(){
   GFX_setTextColor(ILI9341_WHITE);
   GFX_setCursor(0, 60);
   GFX_printf("screen help/clear");
+  GFX_setTextColor(ILI9341_GREEN);
+  GFX_setCursor(0, 72);
+  GFX_printf("counter 10 200 - count up to 10 200 ms delay");
   GFX_flush();}
   
 void screen_clear(){

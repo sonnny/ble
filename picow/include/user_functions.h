@@ -22,5 +22,6 @@ void blink_rgb(char tokens[][MAX_STRING_SIZE]);
 void set_motor(char tokens[][MAX_STRING_SIZE]);
 void screen(char tokens[][MAX_STRING_SIZE]);
 void servo_function(char tokens[][MAX_STRING_SIZE]);
+void max7219(char tokens[][MAX_STRING_SIZE]);
 
 #endif

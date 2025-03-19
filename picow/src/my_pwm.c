@@ -18,6 +18,7 @@ void on_pwm_wrap(){
 void init_motor(){
   gpio_init(DIRECTION);
   gpio_set_dir(DIRECTION, GPIO_OUT);
+  gpio_put(DIRECTION, 1);
   gpio_set_function(PWM_OUT, GPIO_FUNC_PWM);
   slice_num = pwm_gpio_to_slice_num(PWM_OUT);
   pwm_clear_irq(slice_num);
