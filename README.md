@@ -59,11 +59,11 @@ current user functions:
 
 ===================================
 
-rgb red/blue/green
-
 blink 10 200 - blink picow led 10 times delay 200 ms
 
-blink_rgb 10 200 
+counter 10 200 - count 7 segment led up to 10 delay 200 ms
+
+counter reset - reset counter to zero
 
 motor stop/slower/slow/medium/fast/forward/reverse
 
@@ -71,7 +71,7 @@ servor left/center/right
 
 screen clear/help
 
-counter 50 100 -- count 7 segment display up to 50 delay 100 ms
+rgb snakes/random/sparkles/greys/off
 
 ===================================
 
@@ -140,6 +140,8 @@ max7219 cs      ---- 11
 max7219 clk     ---- 14 clk spi1
 
 max7219 din     ---- 15 mosi spi1
+
+ac              ---- 22
 
 
 motor is powered from a 5v separate power supply

@@ -7,7 +7,7 @@
 
 #define NUMBER_OF_STRING 10
 #define MAX_STRING_SIZE 25
-#define ACTIVE_FUNCTIONS 7 // change to how many active functions
+#define ACTIVE_FUNCTIONS 8 // change to how many active functions
 
 usr_funcs user_functions[MAX_USER_FUNCTIONS];
 char tokens[NUMBER_OF_STRING][MAX_STRING_SIZE];
@@ -28,7 +28,7 @@ void process_init(){
 void process_string(char *str){
   //printf("process string %s\n", str);
   GFX_setTextColor(ILI9341_WHITE);
-  GFX_setCursor(0, 200);
+  GFX_setCursor(0, 220);
   GFX_printf(str);
   GFX_flush();
   int token_cnt = parse_string(str, tokens, " ");

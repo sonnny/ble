@@ -20,7 +20,7 @@ body: Column(spacing: 15, children:[
   SizedBox(height:20),
  
   Padding(padding: EdgeInsets.fromLTRB(20,0,10,0), child: TextField(controller: controller,
-    decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'enter text to send'),
+    decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'enter screen help'),
       inputFormatters: [LengthLimitingTextInputFormatter(80),],
       onSubmitted: (text) async {
         var value = utf8.encode(text);

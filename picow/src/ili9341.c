@@ -67,9 +67,9 @@ void screen_help(){
   GFX_setCursor(0, 0);
   GFX_printf("blink 10 200-picow led blink 10 times 200 ms delay");
   GFX_setCursor(0, 12);
-  GFX_printf("rgb red");
+  GFX_printf("counter 10 200 - count up to 10 200 ms delay");
   GFX_setCursor(0, 24);
-  GFX_printf("blink_rgb 5 200");
+  GFX_printf("rgb snakes/random/sparkles/greys/off");
   GFX_setTextColor(ILI9341_ORANGE);
   GFX_setCursor(0, 36);
   GFX_printf("motor stop/slower/slow/medium/fast/forward/reverse");
@@ -78,9 +78,9 @@ void screen_help(){
   GFX_setTextColor(ILI9341_WHITE);
   GFX_setCursor(0, 60);
   GFX_printf("screen help/clear");
-  GFX_setTextColor(ILI9341_GREEN);
+  GFX_setTextColor(ILI9341_CYAN);
   GFX_setCursor(0, 72);
-  GFX_printf("counter 10 200 - count up to 10 200 ms delay");
+  GFX_printf("ac on/off");
   GFX_flush();}
   
 void screen_clear(){

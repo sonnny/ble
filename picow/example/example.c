@@ -18,7 +18,7 @@ void main(void){
   multicore_launch_core1(bt_main);
   sleep_ms(1000); // do not remove this delay
   process_init();
-  printf("starting...\n");
+  // printf("starting...\n");
   for(;;){
     sleep_ms(100);
     bt_get_latest(&ble_data);
