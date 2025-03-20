@@ -30,7 +30,8 @@ body: Column(spacing: 15, children:[
             service.uuid,
             characteristic.uuid,
             value,
-            BleOutputProperty.withResponse);
+            BleOutputProperty.withResponse);// works for ble_app lego gadget
+            //BleOutputProperty.withoutResponse);
         } catch (e){ print(e); }})),
         
   ElevatedButton(child: Text('disconnect and quit'),
