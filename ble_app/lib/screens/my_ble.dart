@@ -19,6 +19,7 @@ return Scaffold(appBar: AppBar(title:Text('my ble')),
 body: Column(spacing: 15, children:[
   SizedBox(height:20),
  
+  Text('write without response'),
   Padding(padding: EdgeInsets.fromLTRB(20,0,10,0), child: TextField(controller: controller,
     decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'enter screen help'),
       inputFormatters: [LengthLimitingTextInputFormatter(80),],
@@ -30,8 +31,23 @@ body: Column(spacing: 15, children:[
             service.uuid,
             characteristic.uuid,
             value,
+           BleOutputProperty.withoutResponse);
+        } catch (e){ print(e); }})),
+   
+    Text('write with response'),
+    Padding(padding: EdgeInsets.fromLTRB(20,0,10,0), child: TextField(controller: controller,
+    decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'enter screen help'),
+      inputFormatters: [LengthLimitingTextInputFormatter(80),],
+      onSubmitted: (text) async {
+        var value = utf8.encode(text);
+        try {
+          await UniversalBle.writeValue(
+            deviceId,
+            service.uuid,
+            characteristic.uuid,
+            value,
             BleOutputProperty.withResponse);// works for ble_app lego gadget
-            //BleOutputProperty.withoutResponse);
+
         } catch (e){ print(e); }})),
         
   ElevatedButton(child: Text('disconnect and quit'),
